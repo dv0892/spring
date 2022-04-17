@@ -3,6 +3,11 @@ package com.playground;
 
 
 public class Triangle {
+	
+	Point point;
+	
+	Triangle(){
+	}
 
 	String type;
 	
@@ -10,7 +15,11 @@ public class Triangle {
 		this.type = type;
 	}
 	
+	public void setType(Point p) {
+		this.point = p;
+	}
+	
 	public String toString() {
-		return "Triangle Type is : " + type;
+		return "Triangle Type is : " + type+" point " + this.point;
 	}
 }
