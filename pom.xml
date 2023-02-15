@@ -4,7 +4,7 @@
   <artifactId>spring-playground</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
-  <properties>
+<properties>
     <org.springframework.version>5.3.18</org.springframework.version>
 </properties>
 
@@ -13,7 +13,6 @@
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-context</artifactId>
 	    <version>${org.springframework.version}</version>
-	    <scope>runtime</scope>
 	</dependency>
 </dependencies>
   
@@ -26,6 +25,37 @@
             <target>1.8</target>
         </configuration>
     </plugin>
+    <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-dependency-plugin</artifactId>
+	    <executions>
+	        <execution>
+	            <id>copy-dependencies</id>
+	            <phase>prepare-package</phase>
+	            <goals>
+	                <goal>copy-dependencies</goal>
+	            </goals>
+	            <configuration>
+	                <outputDirectory>
+	                    ${project.build.directory}/libs
+	                </outputDirectory>
+	            </configuration>
+	        </execution>
+	    </executions>
+	</plugin>
+    <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-jar-plugin</artifactId>
+		<configuration>
+			<archive>
+				<manifest>
+					<addClasspath>true</addClasspath>
+					<classpathPrefix>libs/</classpathPrefix>
+					<mainClass>springpro.ch2.HelloWorldDecoupled</mainClass>
+				</manifest>
+			</archive>
+		</configuration>
+	</plugin>
  </plugins>
  </build>
   

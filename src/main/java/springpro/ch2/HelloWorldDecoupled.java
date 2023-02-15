@@ -16,6 +16,7 @@ public class HelloWorldDecoupled {
 		messageRenderer.setMessageProvider(messageProvider);
 		messageRenderer.render();
 		*/
+		System.out.println("Inside HelloWorldDecoupled....");
 		
 		ApplicationContext springAppContext = new AnnotationConfigApplicationContext(HelloWorldConfiguration.class);
 		MessageRenderer messageRenderer = springAppContext.getBean("renderer",MessageRenderer.class);
